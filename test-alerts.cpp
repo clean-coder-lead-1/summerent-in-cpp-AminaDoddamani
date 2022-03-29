@@ -10,5 +10,5 @@ TEST_CASE("infers the breach according to limits") {
 }
 
 TEST_CASE("classifyTemperaturebreach validate return value") {
-  REQUIRE(classifyTemperatureBreach(-1,0) == TOO_LOW);
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,0) == TOO_LOW);
 }
