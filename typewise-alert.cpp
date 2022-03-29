@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include<map>
 
-std::map<coolingType,std::pair<int,int>> tempBreach{
+//This map contains Key:CoolingType and value:<lowerLimit,upperLimit>
+std::map<CoolingType,std::pair<int,int>> tempBreach{
    {PASSIVE_COOLING,{0,35}},
    {HI_ACTIVE_COOLING,{0,45}},
    {MED_ACTIVE_COOLING,{0,40}}};
@@ -21,19 +22,7 @@ BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
   int lowerLimit = 0;
   int upperLimit = 0;
-  /*switch(coolingType) {
-    case PASSIVE_COOLING:
-      upperLimit = 35;
-      break;
-    case HI_ACTIVE_COOLING:
-      upperLimit = 45;
-      break;
-    case MED_ACTIVE_COOLING:
-      upperLimit = 40;
-      break;
-  }*/
-  std::map<BreachType,std::pair<int,int>>::iterator iter;
-  iter = tempBreach.find(coolingType);
+  std::map<CoolingType,std::pair<int,int>>::iterator iter = tempBreach.find(coolingType);
   lowerLimit = (iter->second).first;
   upperLimit = (iter->second).second;
   return inferBreach(temperatureInC, lowerLimit, upperLimit);
