@@ -8,3 +8,7 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(40, 20, 30) == TOO_HIGH);
   REQUIRE(inferBreach(20, 20, 20) == NORMAL);
 }
+
+TEST_CASE("classifyTemperaturebreach validate return value") {
+  REQUIRE(classifyTemperatureBreach(-1,0,20) == TOO_LOW);
+}
